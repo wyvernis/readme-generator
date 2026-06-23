@@ -161,7 +161,7 @@ export default function Step1Username({ onDataFetched }) {
         <motion.div {...up(.27)} style={{
           display: 'flex', flexWrap: 'wrap', gap: 8, justifyContent: 'center', marginTop: 40,
         }}>
-          {['8 aesthetics', 'custom builder', 'live preview', 'free forever'].map(f => (
+          {['visual builder', 'custom SVG widgets', 'live preview', 'free forever'].map(f => (
             <div key={f} style={{
               fontSize: 11.5, fontFamily: 'var(--sans)', color: 'var(--t3)',
               padding: '4px 10px', borderRadius: 99,

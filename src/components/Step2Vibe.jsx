@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { THEMES } from '../generators';
 import CustomThemeBuilder from './CustomThemeBuilder';
 
-export default function Step2Vibe({ githubData, onThemeSelected }) {
+export default function Step2Vibe({ githubData, onThemeSelected, onOpenBuilder }) {
   const [search, setSearch] = useState('');
   const [showCustom, setShowCustom] = useState(false);
 
@@ -42,6 +42,42 @@ export default function Step2Vibe({ githubData, onThemeSelected }) {
           <span key={l} style={{ fontFamily: 'var(--mono)', fontSize: 11, color: 'var(--t2)' }}>{l}</span>
         ))}
       </motion.div>
+
+      {/* Profile Builder CTA */}
+      <motion.button
+        initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .04 }}
+        onClick={onOpenBuilder}
+        whileHover={{ y: -3 }}
+        whileTap={{ scale: .98 }}
+        style={{
+          width: '100%', marginBottom: 28, padding: 0, border: 'none', cursor: 'pointer',
+          borderRadius: 16, overflow: 'hidden', textAlign: 'left',
+          background: 'linear-gradient(135deg, rgba(157,92,245,.15), rgba(232,121,160,.1))',
+          border: '1.5px solid rgba(157,92,245,.35)',
+          boxShadow: '0 4px 24px rgba(157,92,245,.12)',
+        }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 20, padding: '20px 24px' }}>
+          <div style={{
+            width: 52, height: 52, borderRadius: 14, flexShrink: 0,
+            background: 'linear-gradient(135deg, var(--a1), var(--a2))',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            fontSize: 22, boxShadow: '0 0 24px var(--glow)',
+          }}>🛠</div>
+          <div style={{ flex: 1 }}>
+            <div style={{ fontFamily: 'var(--sans)', fontWeight: 700, fontSize: 16, color: 'var(--t1)', marginBottom: 4 }}>
+              Profile Builder
+            </div>
+            <div style={{ fontFamily: 'var(--sans)', fontSize: 13, color: 'var(--t2)', lineHeight: 1.5 }}>
+              Drag & drop blocks — headers, tech stack, stats, Spotify, streaks & more. Self-hosted SVG widgets.
+            </div>
+          </div>
+          <div style={{
+            padding: '8px 16px', borderRadius: 99, flexShrink: 0,
+            background: 'linear-gradient(135deg, var(--a1), var(--a2))',
+            color: '#fff', fontFamily: 'var(--sans)', fontSize: 12.5, fontWeight: 600,
+          }}>Open Builder →</div>
+        </div>
+      </motion.button>
 
       {/* Header row */}
       <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 16, flexWrap: 'wrap', marginBottom: 32 }}>

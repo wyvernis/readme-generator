@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spotify Auth</title>
+  </head>
+  <body style="font-family: system-ui, sans-serif; background: #0d1117; color: #c9d1d9; display: grid; place-items: center; min-height: 100vh;">
+    <p>Completing Spotify sign in…</p>
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const payload = {
+        type: 'rv-spotify-auth-code',
+        code: params.get('code'),
+        error: params.get('error'),
+        state: params.get('state'),
+      };
+      if (window.opener) {
+        window.opener.postMessage(payload, window.location.origin);
+      }
+      window.close();
+    </script>
+  </body>
+</html>
